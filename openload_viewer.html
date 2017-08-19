@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Embed Video</title>
+	<style>
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			background-color: black;
+		}
+
+		#container {
+			width: 100%;
+			height: 100%;
+			margin: auto;
+		}
+
+		#dinput {
+			width: 370px;
+			margin: auto;
+			padding-top: 10px; 
+		}
+		#inbox {
+			width: 300px;
+			background-color: black;
+			border: 1px solid white;
+			color: white;
+			float: left;
+			margin-right: 5px;
+			padding-left: 5px;
+			/*height: 17px;*/
+		}
+		#submit {
+			border: 1px solid white;
+			color: white;
+			background-color: black;
+		}
+		#video {
+			padding-top: 10px;
+			width: 1044px;
+			margin: auto;
+		}
+		iframe {
+			margin: auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container">
+		<div id="dinput">
+			<input type="text" id="inbox" onkeyup="return window.keyfunc(event);" />
+			<input type="submit" id="submit" title="Submit" onclick="window.addvideo();" />
+		</div>
+		<div id="video">
+			<iframe scrolling="no" frameborder="0" width="1044" height="605" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+		</div>
+	</div>
+</body>
+<script>
+	window.keyfunc =function(e) {
+		if(e.keyCode == 13)
+		{
+			window.addvideo();
+		}
+	}
+	window.addvideo = function() {
+		var iframe = document.querySelector('iframe');
+		var value = document.getElementsByTagName('input')[0].value;
+		location.href = location.pathname + "?v=" + value.replace('/f/','/embed/');
+		iframe.src = location.search.split('=')[1];
+	}
+	window.onload = function() {
+		if(!!location.search)
+		{
+			var iframe = document.querySelector('iframe');
+			iframe.src = location.search.split('=')[1];
+			document.querySelector('#inbox').value = location.search.split('=')[1];
+		}
+	}
+</script>
+</html>
