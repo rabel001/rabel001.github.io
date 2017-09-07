@@ -58,14 +58,19 @@
 		<div class="buttonlink">
 			<a href="openload_viewer.html" target="_blank">Openload Viewer</a>
 		</div>
+		<button class="my_popup_open">Open popup</button>
 		<div id="my_popup">
 			--Just a bunch of nothing here--
 			<button class="my_popup_close">Close</button>
 		</div>
 	</div>
 	<script>
-		$('#my_popup').on('click',function(e){
-			console.log(e);
+		//$('#my_popup').on('click',function(e){
+		//	console.log(e);
+		//});
+		$(document).ready(function() {
+			// Initialize the plugin
+			$('#my_popup').popup();
 		});
 	</script>
 </body>
