@@ -1,87 +1,281 @@
 <!DOCTYPE html>
 <html>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-	<script type="text/javascript" src="//code.jquery.com/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript" src="//cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js"></script>
-	<title>RABEL001.GITHUB.IO</title>
-	<style>
-		html,
-		body {
-			width: 100%;
-			height: 100%;
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
-		}
-		#container {
-			width: 70%;
-			height: calc(100% - 60px);
-			margin: 30px auto;
-			background-color: #d1ecf1;
-			border: 1px solid #0c5460;
-			border-radius: 5px;
-			color: #0c5460;
-			text-align: center;
-			min-width: 270px;
-		}
-		.buttonlink {
-			background: #d1ecf1;
-			border: 1px solid #315888;
-			color: #000000;
-			padding: 1px 3px;
-			margin: 2px auto;
-			width: 156px;
-		}
-		.buttonlink:hover > a,
-		.buttonlink:hover {
-			background: #0c5460;
-			color: white;
-		}
-		a {
-			color: #315888;
-			text-decoration: none;
-		}
-		a:hover {
-			color: white;
-			text-decoration: none;
-		}
-		#my_popup,
-		iframe {
-			width: 100%;
-			height: calc(100% - 24px);
-			margin: 0;
-			padding: 0;
-		}
-	</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js"></script>
+<title>RABEL001.GITHUB.IO</title>
+<style>
+	html,
+	body {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+	}
+
+	#container {
+		width: 70%;
+		height: calc(100% - 60px);
+		margin: 30px auto;
+		background-color: #d1ecf1;
+		border: 1px solid #0c5460;
+		border-radius: 5px;
+		color: #0c5460;
+		text-align: center;
+		min-width: 270px;
+	}
+
+	.buttonlink {
+		display: block;
+		background: #d1ecf1;
+		border: 1px solid #315888;
+		padding: 1px 3px;
+		margin: 2px auto;
+		width: 156px;
+		color: #315888;
+		text-decoration: none;
+	}
+
+	.buttonlink:hover {
+		color: white;
+		text-decoration: none;
+	}
+
+	a {
+		color: #315888;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: white;
+		text-decoration: none;
+	}
+
+	#openload_popup,
+	#passgen_popup,
+	#encryption1_popup,
+	#encryption2_popup,
+	#encryption3_popup,
+	#RSAEncrypt_popup,
+	iframe {
+		width: 98%;
+		height: calc(100% - 24px);
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+	#passgen_popup {
+		width: 800px;
+		height: calc(100% - 24px);
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+
+	.openload_popup_close {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		color: white;
+		background-color: black;
+		border: 1px solid white;
+		text-decoration: none;
+		font: 400 13.3333px Arial;
+	}
+
+	.openload_popup_close:hover {
+		cursor: pointer;
+		background-color: white;
+		color: black;
+	}
+
+	.passgen_popup_close {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		padding: .5rem .75rem;
+		border-radius: .25rem;
+		border: 1px solid transparent;
+		font-weight: 400;
+		font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+		font-size: 1rem;
+    		line-height: 1.25;		
+	}
+
+	.passgen_popup_close:hover {
+		cursor: pointer;
+	}
+
+	.encryption1_popup_close,
+	.encryption2_popup_close {
+		position: absolute;
+		top: 10px;
+		color: white;
+		background-color: black;
+		border: 1px solid white;
+		text-decoration: none;
+		font: 400 13.3333px Arial;
+		cursor: pointer;
+	}
+	.encryption1_popup_close {
+		right: 40px;
+	}
+	.encryption2_popup_close {
+		left: 10px;
+	}
+	.encryption1_popup_close:hover,
+	.encryption2_popup_close:hover {
+		color: black;
+		background-color: white;
+		cursor: pointer;
+	}
+
+	.encryption3_popup_close {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		line-height: 25px;
+		background-color: white;
+		color: black;
+		border: 2px solid #5fcf80;
+		border-radius: 3px;
+		cursor: pointer;
+	}
+	.encryption3_popup_close:hover {
+		cursor: pointer;
+		background-color: #5fcf80;
+		color: white;
+	}
+	.RSAEncrypt_popup_close {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		border: 3px double darkorange;
+		border-radius: 5px;
+		background-color:#F9F8F6;
+	}
+	.RSAEncrypt_popup_close:hover {
+		cursor: pointer;
+		background-color: darkorange;
+		color: white;
+	}
+</style>
+
 <body>
 	<div id="container">
 		<h1 style="font-family: impact;">RABEL001.GITHUB.IO</h1>
-		<div class="buttonlink">
-			<a href="passgenerator.html" target="_blank">Password Generator</a>
+		<a class="buttonlink" href="passgenerator.html" target="_blank">Password Generator</a>
+		<!--<popup></popup>-->
+		<a id="passgen" class="buttonlink" href="#">Pass Gen popup</a>
+		<button class="passgen_popup_open" style="display: none;">Pass Gen popup</button>
+		<div id="passgen_popup">
+			<button class="passgen_popup_close" style="display: none;">Close</button>
+			<iframe id="passgen_popup_iframe" src="passgenerator.html"></iframe>
 		</div>
-		<div class="buttonlink">
-			<a href="openload_viewer.html" target="_blank">Openload Viewer</a>
+		<a class="buttonlink" href="openload_viewer.html" target="_blank">Openload Viewer</a>
+		<!--<popup></popup>-->
+		<a id="openload" class="buttonlink" href="#">Openload popup</a>
+		<button class="openload_popup_open" style="display: none;">Openload popup</button>
+		<div id="openload_popup">
+			<button class="openload_popup_close" style="display: none;">Close</button>
+			<iframe id="openload_popup_iframe" src="openload_viewer.html"></iframe>
 		</div>
-		<div class="buttonlink">
-			<a href="#">Open popup</a>
-			<!--<button class="my_popup_open">Open popup</button>-->
+		<a class="buttonlink" href="https://rawgit.com/rabel001/webpages/master/encryption.html" target="_blank">#1 Encrypt Text</a>
+		<!--<popup></popup>-->
+		<a id="encrpytion1" class="buttonlink" href="#">#1 Encrypt Text Popup</a>
+		<button class="encryption1_popup_open" style="display: none;"></button>
+		<div id="encryption1_popup">
+			<button class="encryption1_popup_close" style="display: none;">Close</button>
+			<iframe id="encryption1_popup_iframe" src="https://rawgit.com/rabel001/webpages/master/encryption.html" defer></iframe>
 		</div>
-		<div id="my_popup">
-			<button class="my_popup_close">Close</button>
+		<a class="buttonlink" href="https://rawgit.com/rabel001/webpages/master/encryption2.html" target="_blank">#2 Encrypt Text</a>
+		<!--<popup></popup>-->
+		<a id="encrpytion2" class="buttonlink" href="#">#2 Encrypt Text Popup</a>
+		<button class="encryption2_popup_open" style="display: none;"></button>
+		<div id="encryption2_popup">
+			<button class="encryption2_popup_close" style="display: none;">Close</button>
+			<iframe id="encryption2_popup_iframe" src="https://rawgit.com/rabel001/webpages/master/encryption2.html"></iframe>
 		</div>
+		<a class="buttonlink" href="https://rawgit.com/rabel001/webpages/master/encryption3.html" target="_blank">#3 Encrypt Text</a>
+		<!--<popup></popup>-->
+		<a id="encrpytion3" class="buttonlink" href="#">#3 Encrypt Text Popup</a>
+		<button class="encryption3_popup_open" style="display: none;"></button>
+		<div id="encryption3_popup">
+			<button class="encryption3_popup_close" style="display: none;">Close</button>
+			<iframe id="encryption3_popup_iframe" src="https://rawgit.com/rabel001/webpages/master/encryption3.html"></iframe>
+		</div>	
+		<a class="buttonlink" href="https://rawgit.com/rabel001/webpages/master/RSACrypt.html" target="_blank">RSA Encrypt Text</a>
+		<!--<popup></popup>-->
+		<a id="RSAEncrypt" class="buttonlink" href="#">RSA Encrypt Popup</a>
+		<button class="RSAEncrypt_popup_open" style="display: none;"></button>
+		<div id="RSAEncrypt_popup">
+			<button class="RSAEncrypt_popup_close" style="display: none;">Close</button>
+			<iframe id="RSAEncrypt_popup_iframe" src="https://rawgit.com/rabel001/webpages/master/RSACrypt.html" defer></iframe>
+		</div>	
 	</div>
 	<script>
-		//$('#my_popup').on('click',function(e){
-		//	console.log(e);
-		//});
-		$(document).ready(function() {
-			$('#my_popup').append($('<iframe src="openload_viewer.html"></iframe>'));
+		$('#openload').on('click', function () {
+			$('.openload_popup_open').click();
+		});
+		$('#passgen').on('click', function() {
+			$('.passgen_popup_open').click();
+		});
+		$('#encrpytion1').on('click', function() {
+			$('.encryption1_popup_open').click();
+		});
+		$('#encrpytion2').on('click', function() {
+			$('.encryption2_popup_open').click();
+		});
+		$('#encrpytion3').on('click', function() {
+			$('.encryption3_popup_open').click();
+		});
+		$('#RSAEncrypt').on('click', function(){
+			$('.RSAEncrypt_popup_open').click();
+		});
+		$(document).ready(function () {
 			// Initialize the plugin
-			$('#my_popup').popup();
+			$('#openload_popup').popup({
+				onopen: function () {
+					var btn = document.querySelector('.openload_popup_close');
+					btn.style.display = "block";
+				}
+			});
+			$('#passgen_popup').popup({
+				onopen: function() {
+					var btn = document.querySelector('.passgen_popup_close');
+					btn.style.display = "block";
+				}
+			});
+			$('#encryption1_popup').popup({
+				onopen: function() {
+					var btn = document.querySelector('.encryption1_popup_close');
+					btn.style.display = "block";
+				}
+			});
+			$('#encryption2_popup').popup({
+				onopen: function() {
+					var btn = document.querySelector('.encryption2_popup_close');
+					btn.style.display = "block";
+				}
+			});
+			$('#encryption3_popup').popup({
+				onopen: function() {
+					var btn = document.querySelector('.encryption3_popup_close');
+					btn.style.display = "block";
+				}
+			});
+			$('#RSAEncrypt_popup').popup({
+				onopen: function() {
+					var btn = document.querySelector('.RSAEncrypt_popup_close');
+					btn.style.display = "block";
+				}			
+			});
 		});
 	</script>
 </body>
+
 </html>
